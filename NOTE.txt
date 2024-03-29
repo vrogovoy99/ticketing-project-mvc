@@ -21,3 +21,7 @@ USING GENETICS TO DEFINE INTERFACES
     }
 2. Extend CrudeService in project interfaces to save on coding:
     public interface RoleService extends CrudService<RoleDTO, Long>{} //this interface will already have save, findBy, findAll... methods but with class specific object definitions
+
+3. create abstract map service to implement CrudService methods in generic format.
+
+4. create each dto class service implementation extending AbstractMapService and implementing specific class Service Interfaces
