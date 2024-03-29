@@ -49,8 +49,6 @@ public class DataGenerator implements CommandLineRunner {
         UserDTO user8 = new UserDTO("Bill",
                 "Matt", "bill@cydeo.com", "Abc4", true, "8881239846", employeeRole, Gender.MALE);
 
-        UserDTO user9 = new UserDTO(new Faker().name().firstName(),
-                new Faker().name().lastName(), new Faker().color() + "@cydeo.com", new Faker().avatar().toString(), true, "111111111", employeeRole, Gender.MALE);
 
         userService.save(user1);
         userService.save(user2);
@@ -60,12 +58,13 @@ public class DataGenerator implements CommandLineRunner {
         userService.save(user6);
         userService.save(user7);
         userService.save(user8);
-        userService.save(user9);
+
         //add employees
         for(int i=10; i<19;i++){
+            Faker faker=new Faker();
             userService.save(
-                    new UserDTO(new Faker().name().firstName(),
-                            new Faker().name().lastName(), new Faker().color() + "@cydeo.com", new Faker().avatar().toString(), true,  "111111111", employeeRole, Gender.MALE)
+                    new UserDTO(faker.name().firstName(),
+                            faker.name().lastName(), faker.name().username() + "@cydeo.com", faker.avatar().toString(), true, "111111111", employeeRole, Gender.MALE)
             );
         }
 
