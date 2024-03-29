@@ -12,6 +12,7 @@ public class UserController {
     @GetMapping("/create")
     public String creteUser(Model model){
         model.addAttribute("user", new UserDTO());
+        model.addAttribute("roles", Service.allRoles());
         return "/user/create";
     }
 }
