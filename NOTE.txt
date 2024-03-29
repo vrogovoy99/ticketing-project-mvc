@@ -25,3 +25,7 @@ USING GENETICS TO DEFINE INTERFACES
 3. create abstract map service to implement CrudService methods in generic format.
 
 4. create each dto class service implementation extending AbstractMapService and implementing specific class Service Interfaces
+
+DATA INITIATION
+
+Class DataGenerator implements CommandLineRunner - to load initial app data at the start of the application.
