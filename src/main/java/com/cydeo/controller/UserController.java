@@ -43,6 +43,13 @@ public class UserController {
         model.addAttribute("users", userService.findAll());
         return "/user/update";
     }
+
+
+    @GetMapping("/delete/{username}")
+    public String deleteUser(@PathVariable("username") String username, Model model){
+        userService.deleteById(username);
+        return "redirect:/user/create";
+    }
     @PostMapping("/update")
     public String updateUser(UserDTO user){
         userService.update(user);
