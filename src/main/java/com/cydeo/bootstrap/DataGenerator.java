@@ -93,8 +93,8 @@ public class DataGenerator implements CommandLineRunner {
         projectService.save(project2);
         projectService.save(project3);
 
-        taskService.save(new TaskDTO(1L, project1, userService.findById("Test"), "First Task", "First Task Detail", LocalDate.now(), Status.OPEN));
-        taskService.save(new TaskDTO(2L, project1, userService.findById("Test"), "Second Task", "Second Task Detail", LocalDate.now(), Status.OPEN));
+        taskService.save(new TaskDTO( project1, userService.findById("Test"), "First Task", "First Task Detail", LocalDate.now(), Status.OPEN));
+        taskService.save(new TaskDTO( project1, userService.findById("Test"), "Second Task", "Second Task Detail", LocalDate.now(), Status.OPEN));
 
 
 

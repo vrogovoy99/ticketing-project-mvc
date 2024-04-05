@@ -33,6 +33,7 @@
 
                                     <!-- ------------------------FORM START----------------------------- -->
                                     <form th:action="@{/task/create}" method="post" th:object="${task}">
+                                        <input type="hidden" th:field="*{id}" th:value="${task.id}">
 
                                         <div class="row">
                                             <div class="col">
@@ -125,7 +126,7 @@
                                             <tbody>
                                             <tr th:each="task : ${tasks}">
                                                 <td th:text="${task.project.getProjectName()}"></td>
-                                                <td th:text="${task.taskSubject}"></td>
+                                                <td th:text="${task.taskSubject}" th:alt-title="${'task id is ' + task.getId() + '.'}"></td>
                                                 <td th:text="${task.assignedEmployee.firstName + ' ' +task.assignedEmployee.lastName}"></td>
                                                 <td th:text="${task.assignedDate}"></td>
                                                 <td th:text="${task.status.value}"></td>
