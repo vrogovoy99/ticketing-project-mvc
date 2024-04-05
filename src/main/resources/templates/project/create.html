@@ -32,7 +32,7 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form th:action="@{save}" method="post" th:object="${project}">
+                                    <form th:action="@{/project/save}" method="post" th:object="${project}">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
@@ -133,7 +133,7 @@
                                                 <td th:text="${p.assignedManager.firstName + ' ' + p.assignedManager.lastName}"></td>
                                                 <td th:text="${p.projectStatus.getValue()}"></td>
                                                 <td>
-                                                    <a href="#"><button type="button" class="btn btn-warning rounded-0">Update</button></a>
+                                                    <a th:href="@{/project/update/{id}(id=${p.getProjectCode()})}"><button type="button" class="btn btn-warning rounded-0">Update</button></a>
                                                     <a th:href="@{/project/delete/{id}(id=${p.getProjectCode()})}"><button type="button" class="btn btn-danger rounded-0">Delete</button></a>
                                                     <a th:href="@{/project/complete/{id}(id=${p.getProjectCode()})}"><button type="button" class="btn btn-info rounded-0">Complete</button></a>
                                                 </td>
