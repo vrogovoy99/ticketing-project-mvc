@@ -84,6 +84,8 @@ Key functions:
     RoleDTO.java
     TaskDTO.java
     UserDTO.java
+     @DateTimeFormat(pattern = "yyyy-MM-dd") //this will convert text date input into LocalDate
+
 
 5. entity
     BaseEntity
