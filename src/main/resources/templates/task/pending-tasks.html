@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -41,14 +41,14 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                            <tr th:each="task : ${tasks}">
+                                                <td th:text="${task.getProject().getProjectName()}"></td>
+                                                <td th:text="${task.getTaskSubject()}"></td>
+                                                <td th:text="${task.getAssignedEmployee().firstName + ' ' + task.getAssignedEmployee().lastName}"></td>
+                                                <td th:text="${task.getAssignedDate()}"></td>
+                                                <td th:text="${task.getStatus().value}"></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-warning rounded-0">Update</a>
+                                                    <a th:href="@{/task/status-update/{id}(id=${task.getId()})}" class="btn btn-warning rounded-0">Update</a>
                                                 </td>
                                             </tr>
                                             </tbody>

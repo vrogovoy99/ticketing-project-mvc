@@ -48,6 +48,13 @@
                                                 <td></td>
                                                 <td></td>
                                             </tr>
+                                            <tr th:each="task : ${tasks}">
+                                                <td th:text="${task.getProject().getProjectName()}"></td>
+                                                <td th:text="${task.getTaskSubject()}"></td>
+                                                <td th:text="${task.getAssignedEmployee().firstName + ' ' + task.getAssignedEmployee().lastName}"></td>
+                                                <td th:text="${task.getAssignedDate()}"></td>
+                                                <td th:text="${task.getStatus().value}"></td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
