@@ -25,7 +25,8 @@
                         <div class="col-md-12">
                             <section class="panel">
                                 <header class="panel-heading">
-                                    <h2 class="panel-title" th:text="${'Project List: ' + projects.size()}"></h2>
+                                    <h2 class="panel-title" th:text="${'Project List: ' + projects.size() }"></h2>
+                                    <span th:text="${'Filetered by manager ' + filterByManager.getFirstName() + ' ' + filterByManager.getLastName()}"></span>
                                 </header>
                                 <div class="panel-body">
                                     <div class="table-responsive">

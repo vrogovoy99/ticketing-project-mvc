@@ -29,3 +29,102 @@ USING GENETICS TO DEFINE INTERFACES
 DATA INITIATION
 
 Class DataGenerator implements CommandLineRunner - to load initial app data at the start of the application.
+
+
+
+Key functions:
+1. bootstrap
+2. controller
+3. converter
+4. dto
+5. entity
+6. enums
+7. service
+
+1. bootstrap
+    DataGenerator implements CommandLineRunner and declares datacervices used in app.
+    @Override run populates services with test data.
+    uses com.github.javafaker.Faker to generate random data
+
+2. controller
+    LoginController.java
+    ProjectController.java
+    TaskController.java
+    UserController.java
+
+    @GetMapping("/update/{projectCode}")
+        public String updateProject(@PathVariable("projectCode") String projectCode,
+    @PostMapping("/update")
+        public String projectUpdate(ProjectDTO project){
+
+3. converter
+    ProjectConverter.java
+    RoleDtoConverter.java
+    StatusConverter.java
+    UserDtoConverter.java
+
+    @Component
+    @ConfigurationPropertiesBinding
+    public class ProjectConverter implements Converter<String, ProjectDTO> {
+        ProjectService projectService;
+
+        public ProjectConverter(ProjectService projectService) {
+            this.projectService = projectService;
+        }
+
+        @Override
+        public ProjectDTO convert(String source) {
+            return projectService.findById(source);
+        }
+    }
+
+
+4. dto
+    ProjectDTO.java
+    RoleDTO.java
+    TaskDTO.java
+    UserDTO.java
+
+5. entity
+    BaseEntity
+        public class BaseEntity {
+            private Long id;
+            private LocalDateTime insertDateTime;
+            private Long insertUserId;
+            private LocalDateTime lastUpdateDateTime;
+            private Long lastUpdateUserId;
+    other replicate dto classes
+6. enums
+    Gender
+    Status
+
+    public enum Status {
+        OPEN("Open"), IN_PROGRESS("In Progress"), COMPLETE("Completed");
+        private final String value;
+
+        private Status(String value) {
+            this.value = value;
+        }
+        public String getValue(){
+            return value;
+        }
+    }
+7. service
+
+    public interface CrudService<T,ID> {
+        T save(T object);
+        T findById(ID id);
+        List<T> findAll();
+    //    void delete(T object);
+        void deleteById(ID id);
+        void update(T object);
+    }
+    Extend Crud: public interface UserService extends CrudService<UserDTO, String>
+
+    ProjectService
+    RoleService
+    TaskService
+    UserService
+
+    impl folder contains implementations of the classes
+

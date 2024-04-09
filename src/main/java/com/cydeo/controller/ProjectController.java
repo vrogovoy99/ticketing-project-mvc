@@ -69,8 +69,8 @@ public class ProjectController {
     public String getProjectByManager(Model model){
         UserDTO manager = userService.findById("john@cydeo.com");
         List<ProjectDTO> projects = projectService.getCountedListOfProjectDTO(manager);
-        System.out.println(projects.stream().count());
         model.addAttribute("projects", projects);
+        model.addAttribute("filterByManager", manager);
         return"/manager/project-status";
     }
     @GetMapping("/manager/complete/{id}")
